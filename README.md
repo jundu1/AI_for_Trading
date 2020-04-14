@@ -1,4 +1,4 @@
-# AI-for-Trading
+# AI for Trading
 
 This is the repo for projects done in Udacity nano-degree course **AI for Trading** 
 
