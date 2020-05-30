@@ -10,7 +10,7 @@ def count_words(text):
     
     # Split text into tokens (words), leaving out punctuation
     # (Hint: Use regex to split on non-alphanumeric characters)
-    text_list = re.compile("([\w][\w]*'?\w?)").findall(text)
+    text_list = re.compile(r"([\w][\w]*'?\w?)").findall(text)
     
     # Aggregate word counts using a dictionary
     counts = {x:text.count(x) for x in text_list}
