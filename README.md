@@ -3,7 +3,6 @@
 This is the repo for projects done in Udacity nano-degree course **AI for Trading** 
 
 # Project 1: Trading with Momentum
-## Instructions
 * Implement a trading strategy with Momentum, and test to see if it has the potential to be profitable.
 * Supplied with a universe of stocks and time range, and a textual description of how to generate a trading signal based on a momentum indicator.
 * Compute the signal for the time range given and apply it to the dataset to produce projected returns.
@@ -11,7 +10,6 @@ This is the repo for projects done in Udacity nano-degree course **AI for Tradin
 * For the dataset, we'll be using the end of day from Quotemedia.
 
 # Project 2: Breakout Strategy Project
-## Instructions
 * Implement the breakout strategy. 
 * Find and remove any outliers. 
 * Test to see if it has the potential to be profitable using a Histogram and P-Value.
@@ -25,7 +23,6 @@ This is the repo for projects done in Udacity nano-degree course **AI for Tradin
 * For the dataset, we'll be using the end of day from Quotemedia.
 
 # Project 5: Trading with Momentum
-## Instructions
 * Conduct NLP Analysis on 10-k financial statements to generate an alpha factor.
 * For the dataset, we'll be using the end of day from Quotemedia and Loughran-McDonald sentiment word lists.
 
