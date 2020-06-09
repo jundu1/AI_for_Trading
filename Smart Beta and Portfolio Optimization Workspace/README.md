@@ -1,5 +1,11 @@
 
 # Project 3: Smart Beta Portfolio and Portfolio Optimization
+* Build a smart beta portfolio and compare it to a benchmark index.
+* To find out how well the smart beta portfolio did, calculate the tracking error against the index.
+* Then build a portfolio by using quadratic programming to optimize the weights.
+* Rebalance this portfolio and calculate turn over to evaluate the performance. Use this metric to find the optimal rebalancing Frequency.
+* For the dataset,
+
 ## Overview
 Smart beta has a broad meaning, but we can say in practice that when we use the universe of stocks from an index, and then apply some weighting scheme other than market cap weighting, it can be considered a type of smart beta fund.  A Smart Beta portfolio generally gives investors exposure or "beta" to one or more types of market characteristics (or factors) that are believed to predict prices while giving investors a diversified broad exposure to a particular market. Smart Beta portfolios generally target momentum, earnings quality, low volatility, and dividends or some combination. Smart Beta Portfolios are generally rebalanced infrequently and follow relatively simple rules or algorithms that are passively managed.  Model changes to these types of funds are also rare requiring prospectus filings with US Security and Exchange Commission in the case of US focused mutual funds or ETFs.. Smart Beta portfolios are generally long-only, they do not short stocks.
 

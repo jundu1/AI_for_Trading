@@ -22,7 +22,7 @@ This is the repo for projects done in Udacity nano-degree course **AI for Tradin
 * Rebalance this portfolio and calculate turn over to evaluate the performance. Use this metric to find the optimal rebalancing Frequency.
 * For the dataset, we'll be using the end of day from Quotemedia.
 
-# Project 4
+# Project 4: Multi-factor Model
 * Build a statistical risk model using PCA. 
 * Build a portfolio along with 5 alpha factors. 
 * Create these factors, then evaluate them using factor-weighted returns, quantile analysis, sharpe ratio, and turnover analysis. 
