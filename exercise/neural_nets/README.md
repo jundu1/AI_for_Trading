@@ -31,6 +31,7 @@ This means multi-class classification that reused the info from the input and hi
 
 ### More Layers 
 Simple non-linear models to more complex non-linear models  
+Note: It's the (activation function) && (hidden layers >= 1) that introduce the non-linearity  
 ![More Layers](./images/more_layers.png?raw=true "More Layers")
 
 ## Feedforward and Backpropagation
@@ -38,3 +39,10 @@ Using the chain rule, we are able to resovle the derivatives of all parameters (
 ![backpropagation](./images/backpropagation.png)
 * derivatives of the sigmoid function  
 ![sigmoid_deriv](./images/sigmoid_derivatives.png)
+
+## Training NN
+### Early Stopping
+Plot error vs Epochs, and stop when minimizing diff of testing error - training error
+
+### Regularization
+![regularization_scaling](./images/regularization_scaling_weights.png)
