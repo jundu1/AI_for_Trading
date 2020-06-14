@@ -45,4 +45,31 @@ Using the chain rule, we are able to resovle the derivatives of all parameters (
 Plot error vs Epochs, and stop when minimizing diff of testing error - training error
 
 ### Regularization
+Problem with large weights:
+* Same split but more extreme probabilities -> overfitting
+* Making gradient closer to 0 in larger range, hence difficult to descent -> too certern
 ![regularization_scaling](./images/regularization_scaling_weights.png)
+
+* L1 regularization - sparse, feature selection 
+* L2 regularization - less sparse, for training
+
+### Dropout
+When going through epochs, randomly turn off nodes for training, by assigning a probability each node will be dropped (e.g. = 0.2), that force training the models on the 'weak' nodes
+
+### Random Restart
+Start from a few random restart points to avoid being trapped in local minimum in gradient descent
+
+### Other activation functions
+* Sigmoid: gradient gets small (flat) on both sides -> very slow descend
+* Hyperbolic Tangent (tanh): similar to sigmoid, but larger derivatives, -> better descending
+* ReLU: derivative = 1 when f(x) > 0; Note the output layer is better to change back to sigmoid / tanh, for classification problem, otherwise the final output will be linear on one side
+
+### Learning Rate Decay and Momentum
+* Learning Rate Decay: reduce learning rate as epoch # increases
+* Momentum: step(n) = step(n) + beta\*step(n-1) + beta^2\*step(n-2) + ...; This is to keep the descend step momentum trying to overpass the local minimum trap
+
+
+
+
+
+
