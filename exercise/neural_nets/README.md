@@ -14,8 +14,9 @@ The log loss (a.k.a. cross entropy) function (equation 12.7 below) is actually j
 # Neural Networks
 
 ## Perceptron and (Stochastic) Gradient Descent
-The gradient_descent.ipynb notebook actually applies the stochastic gradient descent approach.
-With # epoches = 100, and each batch contains only 1 data point
+The gradient_descent.ipynb notebook uses for loop to go through all data points in each epoch, updating the weight in iteration of each data point. This works because the overall Error function is sum (mean) of the error of every data points. The derivatives are also independent amongst the data points. Therefore, the overall gradient is the sum of individual data point gradient!
+
+This however can be viewed as applying the stochastic gradient descent approach. i.e. With # epochs = 100, and each batch contains only 1 data point
 
 ### Difference from Gradient Descent vs perceptron notebooks
 They are largely the same because both updates the coefficients with log loss function. Except
@@ -68,8 +69,24 @@ Start from a few random restart points to avoid being trapped in local minimum i
 * Learning Rate Decay: reduce learning rate as epoch # increases
 * Momentum: step(n) = step(n) + beta\*step(n-1) + beta^2\*step(n-2) + ...; This is to keep the descending step momentum trying to overpass the local minimum trap
 
+### To understand the dimensions
+#### Classification Problem
+1. Epoch - E, each epoch contains B (mini) batches
+1. Batch - B, each batch contains N data points
+1. Data Points - N, data set of (X<sub>1</sub>, X<sub>2</sub>, ..., X<sub>n</sub>, ... X<sub>N</sub>)
+1. Features - K, each data point X<sub>n</sub> has K features (x<sub>1</sub>, x<sub>2</sub>, ... x<sub>k</sub>, ... , x<sub>K</sub>)
+1. Classes - classification problem with C classes.
 
+For each data point n,
+1. input X = (x<sub>1</sub>, x<sub>2</sub>, ... x<sub>k</sub>, ... , x<sub>K</sub>)
+1. target c, which is a value in the range [1, C] (sometimes using index range [0, 1-C])
+1. linear layer output before final activation Y = (y<sub>1</sub>, y<sub>2</sub>, ... y<sub>c</sub>, ..., y<sub>C</sub>)
+1. log softmax activation (log e<sup>y<sub>1</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>), log e<sup>y<sub>2</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>), ... log e<sup>y<sub>c</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>), log e<sup>y<sub>C</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>))
+1. negative log-likelihood loss l<sub>n</sub>=-log e<sup>y<sub>c</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>)
 
-
-
-
+In each batch
+1. input shape (N, K)
+1. target (label) shape (N, 1), each element has a value in the range [1, C]
+1. hidden layer shape is customized hyper param
+1. log softmax activated output shape (N, C)
+1. NLLLoss is a scalar L = sum<sub>N</sub>(l<sub>n</sub>)
