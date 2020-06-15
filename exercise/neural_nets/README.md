@@ -78,11 +78,11 @@ Start from a few random restart points to avoid being trapped in local minimum i
 1. Classes - classification problem with C classes.
 
 For each data point n,
-1. input X = (x<sub>1</sub>, x<sub>2</sub>, ... x<sub>k</sub>, ... , x<sub>K</sub>)
-1. target c, which is a value in the range [1, C] (sometimes using index range [0, 1-C])
-1. linear layer output before final activation Y = (y<sub>1</sub>, y<sub>2</sub>, ... y<sub>c</sub>, ..., y<sub>C</sub>)
-1. log softmax activation (log e<sup>y<sub>1</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>), log e<sup>y<sub>2</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>), ... log e<sup>y<sub>c</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>), log e<sup>y<sub>C</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>))
-1. negative log-likelihood loss l<sub>n</sub>=-log e<sup>y<sub>c</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>)
+1. input X<sub>n</sub> = (x<sub>1</sub>, x<sub>2</sub>, ... x<sub>k</sub>, ... , x<sub>K</sub>)
+1. target c which is a scalar with value in the range [1, C] (sometimes using index range [0, 1-C])
+1. linear layer output before final activation is a vector of C: Y<sub>n</sub> = (y<sub>1</sub>, y<sub>2</sub>, ... y<sub>c</sub>, ..., y<sub>C</sub>)
+1. log softmax activation is a vector of C: (log e<sup>y<sub>1</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>), log e<sup>y<sub>2</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>), ... log e<sup>y<sub>c</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>), log e<sup>y<sub>C</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>))
+1. negative log-likelihood loss is a scalar: l<sub>n</sub>=-log e<sup>y<sub>c</sub></sup>/sum<sub>C</sub>(e<sup>Y</sup>)
 
 In each batch
 1. input shape (N, K)
