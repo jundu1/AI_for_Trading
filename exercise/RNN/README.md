@@ -1,13 +1,16 @@
-## RNN vs LSTM
-#### In RNN
+## pytorch.nn.RNN vs pytorch.nn.LSTM
+pytorch tips: 
+* batch_first - if true, dim of input/output will be (batch_size, seq_len, ...). If false (by default), the the input/output dim will be (seq_len, batch_size, ...))
+* num_directions - If the RNN is bidirectional, num_directions should be 2, else it should be 1
+#### In nn.RNN
 * The inputs are 
-    1. input ('event'/new datapoint), dim (batch_size, seq_length, input_size)
-    1. hidden ('old memory', customized # layers AND # dimensions), dim (n_layers, batch_size, hidden_dim)
+    1. input ('event'/new datapoint), dim (batch_size, seq_len, input_size), input_size is the # features for each time point
+    1. hidden ('old memory', customized # layers AND # dimensions), dim (num_layers * num_directions, batch_size, hidden_size)
 * The outputs are
-    1. output (prediction) - In pytorch, default tourch.nn.RNN, the output has dimension of (batch_size, time_step, hidden_dim), but this can be customized to the desired output dimension by adding more layers after the default RNN layer. See customized RNN with torch.nn.RNN + Linear layer <pre>..\deep_learning_v2_pytorch\recurrent-neural-networks\time-series\Simple_RNN.ipynb</pre>
-    1. hidden ('new memory'), dim (n_layers, batch_size, hidden_dim)
+    1. output (prediction) - In pytorch, default tourch.nn.RNN, the output has dimension of (batch_size, seq_len,  num_directions * hidden_size), but this can be customized to the desired output dimension by adding more layers after the default RNN layer. See customized RNN with torch.nn.RNN + Linear layer <pre>..\deep_learning_v2_pytorch\recurrent-neural-networks\time-series\Simple_RNN.ipynb</pre>
+    1. hidden ('new memory'), dim (num_layers * num_directions, batch_size, hidden_size)
 
-#### In LSTM
+#### In nn.LSTM
 * The inputs are 
     1. input ('event'/new datapoint)
     1. Long Term Memory ('old LTM', customized # layers and # dimensions)
