@@ -24,5 +24,6 @@ Prep a dictionary of word counts, then apply the equation and returns a probabil
   1. Softmax output layer has dim of (target_size, *vocabulary_size*), where each row correspond to each input node, and each col represents the probability of that word token appears within the window
 ![skip_gram_dimensions](\assets\skip_gram_dimensions.png)
 
-
 ### Negative Sampling
+Idea is to use a weighted, customized loss function only updating the weights for all the correct targets (pushing prob to 1), and only a small subset of the incorrect predictions (pushing the prob to 0)  
+This requires 2 embedding layers
