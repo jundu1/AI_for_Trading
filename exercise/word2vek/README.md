@@ -1,13 +1,17 @@
-# Embedding
+# Word2Vek and Embedding
 ## Subsampling of input
 To reduce (not completely discard) common words of 'the', 'and', etc. in the input dataset.
 With equation P(w) = 1 - sqrt(t/f(w)), we calc the probability that we should drop out the word. t is the threshold we set.
 Prep a dictionary of word counts, then apply the equation and returns a probability. Then we generate random numbers between [0,1] for each of the word instance and decide to drop them or not
 
+### Negative Sampling
+Idea is to use a weighted, customized loss function only updating the weights for all the *correct* targets (pushing prob to 1), and only a small subset of the incorrect predictions (pushing the prob to 0)  
+This requires 2 embedding layers
+
 ## Dimensions
 ![word2vek_arch](\assets\word2vec_architectures.png)
 ### CBOW (Continuous Bag-Of-Words)
-
+(skipped)
 ### Skip-gram
 * If thinking as an ordinary NN,  
 ![skip_gram_net_arch](\assets\skip_gram_net_arch.png)
@@ -24,6 +28,5 @@ Prep a dictionary of word counts, then apply the equation and returns a probabil
   1. Softmax output layer has dim of (target_size, *vocabulary_size*), where each row correspond to each input node, and each col represents the probability of that word token appears within the window
 ![skip_gram_dimensions](\assets\skip_gram_dimensions.png)
 
-### Negative Sampling
-Idea is to use a weighted, customized loss function only updating the weights for all the correct targets (pushing prob to 1), and only a small subset of the incorrect predictions (pushing the prob to 0)  
-This requires 2 embedding layers
+## Customized Embedding in RNN
+Each word will be treated as one data point, and if using RNN or LSTM, the final prediction of sentiment after a whole sentense is the target
