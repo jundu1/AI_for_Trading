@@ -26,7 +26,17 @@ This requires 2 embedding layers
   1. Each input node (blue circle) represents one word token, with dim (input_size, 1), where input_size = target_size = batch_size * window_size
   1. Embedding *weight* has dim of (vocabulary_size, embed_dim)
   1. Softmax output layer has dim of (target_size, *vocabulary_size*), where each row correspond to each input node, and each col represents the probability of that word token appears within the window
+  1. Note all words were embeded in one go because each word can be treated independently in their own dimension. In RNN we will have to treat each single word seperately
 ![skip_gram_dimensions](\assets\skip_gram_dimensions.png)
 
-## Customized Embedding in RNN
-Each word will be treated as one data point, and if using RNN or LSTM, the final prediction of sentiment after a whole sentense is the target
+## Embedding in RNN
+Each Original input data point is one sentence (list of words). As we are applying RNN, we dig into each sentence, and then each word will be treated as one node feeding into --> Embedding --> RNN or LSTM consecutively, the final prediction of sentiment (after a whole sentence nodes)is used to compare with the ground truth target
+![embedding_lstm](..\deep_learning_v2_pytorch\sentiment-rnn\assets\network_diagram.png)
+
+### Steps
+1. Each batch contains *#batch_size* data points
+1. Each input data point is one sentence i.e. list of words
+1. Prepare vocab dictionary, tokenize the input, and encode the target
+1. Remove extremely long/short sentences
+1. Padding/Truncating: left-fill short ones with 0s (left-pad), or cut the long ones (truncating) from right to ensure the same input shape (batch_size, sequence_len) where sequence_len = length of the sentence
+1. Shuffle the data with data loader to avoid training on order of the data
