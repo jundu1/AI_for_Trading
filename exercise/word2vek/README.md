@@ -23,9 +23,10 @@ This requires 2 embedding layers
 
 * In pytorch implementation of Embedding layer
 ![skip_gram_arch](\assets\skip_gram_arch.png)
-  1. Each input node (blue circle) represents one word token, with dim (input_size, 1), where input_size = target_size = batch_size * window_size
+  1. Each input node (blue circle) represents one word token, and entire input vector has shape (text_size, 1), where text_size =  batch_size * window_size  
   1. Embedding *weight* has dim of (vocabulary_size, embed_dim)
-  1. Softmax output layer has dim of (target_size, *vocabulary_size*), where each row correspond to each input node, and each col represents the probability of that word token appears within the window
+  1. Embedding *layer output* has dim of (text_size, embed_dim)
+  1. Softmax output layer has dim of (text_size, *vocabulary_size*), where each row corresponds to each input node word, and each col represents the probability of that word token appears within the window
   1. Note all words were embeded in one go because each word can be treated independently in their own dimension. In RNN we will have to treat each single word seperately
 ![skip_gram_dimensions](\assets\skip_gram_dimensions.png)
 
@@ -35,8 +36,17 @@ Each Original input data point is one sentence (list of words). As we are applyi
 
 ### Steps
 1. Each batch contains *#batch_size* data points
-1. Each input data point is one sentence i.e. list of words
-1. Prepare vocab dictionary, tokenize the input, and encode the target
+1. Each input data point is one sentence i.e. list of words. 
+1. Prepare vocab dictionary, tokenize the input, and encode the target. len(vocab_dict)
 1. Remove extremely long/short sentences
-1. Padding/Truncating: left-fill short ones with 0s (left-pad), or cut the long ones (truncating) from right to ensure the same input shape (batch_size, sequence_len) where sequence_len = length of the sentence
+1. Padding/Truncating: left-fill short ones with 0s (left-pad), or cut the long ones (truncating) from right to ensure the same input shape (batch_size, seq_len) where len(list(sentence_words_tokens)) = seq_len
 1. Shuffle the data with data loader to avoid training on order of the data
+1. Embedding layer: 
+    * input shape (batch_size, seq_len), <sub>*equivalently think it as one-hot encoded input (batch_size, seq_len, vocab_size)*</sub>. 
+    * output shape (batch_size, seq_len, embedding_dim)
+1. LSTM layer (refer back to RNN notes):
+    * input (batch_size, seq_len, embedding_dim)
+    * output ()
+    * hidden ()
+
+
